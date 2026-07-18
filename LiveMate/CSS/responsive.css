@@ -1,0 +1,787 @@
+/* ==================================================
+   1. 1500px以下
+================================================== */
+@media screen and (max-width: 1500px) {
+
+    .app-shell {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+        border-radius: 38px;
+    }
+
+    .main-navigation {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .main-content {
+        padding: 26px;
+    }
+
+    .home-bottom-grid {
+        grid-template-columns: minmax(0, 0.95fr) minmax(480px, 1.05fr);
+        gap: 26px;
+    }
+
+    .live-card-grid {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+
+    .checklist-grid {
+        grid-template-columns: repeat(2, minmax(240px, 1fr));
+    }
+
+    .spot-category-grid {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+    }
+
+}
+
+/* ==================================================
+   2. 1250px以下
+================================================== */
+@media screen and (max-width: 1250px) {
+
+    .top-header {
+        align-items: flex-start;
+    }
+
+    .header-status {
+        min-width: 250px;
+    }
+
+    .home-bottom-grid,
+    .budget-layout,
+    .venue-layout,
+    .diary-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .next-concert-card,
+    .event-settings-panel,
+    .budget-input-panel,
+    .budget-chart-panel,
+    .venue-guide-panel,
+    .local-spot-panel,
+    .setlist-panel,
+    .memories-panel {
+        min-height: auto;
+    }
+
+    .travel-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .map-placeholder {
+        min-height: 430px;
+    }
+
+    .vlog-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .vlog-theater {
+        min-height: 430px;
+    }
+
+    .timeline-entry-form {
+        grid-template-columns: 190px minmax(220px, 0.8fr) minmax(260px, 1fr);
+    }
+
+    .timeline-entry-form .primary-action-button {
+        grid-column: 1 / -1;
+        justify-self: flex-end;
+    }
+
+}
+
+/* ==================================================
+   3. 1024px以下
+================================================== */
+@media screen and (max-width: 1024px) {
+
+    .app-shell {
+        width: 100%;
+        min-height: 100vh;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .top-header {
+        padding: 23px 24px 20px;
+    }
+
+    .brand-description {
+        max-width: 520px;
+    }
+
+    .header-status {
+        padding: 12px 17px;
+    }
+
+    .main-navigation {
+        padding: 12px 16px;
+    }
+
+    .nav-button {
+        min-height: 47px;
+        padding: 0 18px;
+    }
+
+    .main-content {
+        padding: 23px 20px 32px;
+    }
+
+    .panel,
+    .next-concert-card {
+        border-radius: 34px;
+    }
+
+    .large-feature-panel,
+    .live-history-panel,
+    .event-settings-panel,
+    .budget-input-panel,
+    .budget-chart-panel,
+    .venue-guide-panel,
+    .local-spot-panel,
+    .travel-panel,
+    .setlist-panel,
+    .memories-panel,
+    .vlog-panel {
+        padding: 30px;
+    }
+
+    .panel-heading {
+        gap: 20px;
+    }
+
+    .live-card-grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    }
+
+    .form-grid {
+        gap: 15px;
+    }
+
+    .budget-legend {
+        grid-template-columns: repeat(2, minmax(145px, 1fr));
+    }
+
+    .spot-category-grid {
+        grid-template-columns: repeat(3, minmax(90px, 1fr));
+    }
+
+}
+
+/* ==================================================
+   4. 820px以下
+================================================== */
+@media screen and (max-width: 820px) {
+
+    .top-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-status {
+        width: 100%;
+        min-width: 0;
+        justify-content: space-around;
+    }
+
+    .status-block {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .status-block strong {
+        max-width: none;
+    }
+
+    .main-content {
+        padding: 20px 16px 28px;
+    }
+
+    .panel-heading {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .panel-heading > button,
+    .panel-heading .primary-action-button,
+    .panel-heading .mint-action-button {
+        align-self: flex-start;
+    }
+
+    .live-card-grid,
+    .checklist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .home-bottom-grid {
+        gap: 22px;
+        margin-top: 22px;
+    }
+
+    .next-concert-card {
+        min-height: 430px;
+        padding: 34px;
+    }
+
+    .next-concert-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .concert-meta {
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .large-countdown {
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wide-inline-form,
+    .goods-entry-form,
+    .timeline-entry-form,
+    .spot-custom-search,
+    .setlist-entry-form {
+        grid-template-columns: 1fr;
+    }
+
+    .wide-inline-form .primary-action-button,
+    .wide-inline-form .outline-button,
+    .goods-entry-form .primary-action-button,
+    .timeline-entry-form .primary-action-button,
+    .spot-custom-search .primary-action-button,
+    .setlist-entry-form .primary-action-button {
+        width: 100%;
+    }
+
+    .timeline-entry-form .primary-action-button {
+        grid-column: auto;
+        justify-self: stretch;
+    }
+
+    .check-progress-box {
+        width: 100%;
+    }
+
+    .timeline-item {
+        grid-template-columns: 65px minmax(0, 1fr);
+    }
+
+    .timeline-item-actions {
+        grid-column: 2;
+        justify-content: flex-end;
+    }
+
+    .travel-layout,
+    .vlog-layout {
+        gap: 24px;
+    }
+
+    .transport-button-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .spot-category-grid {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+
+    .diary-photo-preview {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+/* ==================================================
+   5. 640px以下
+================================================== */
+@media screen and (max-width: 640px) {
+
+    body {
+        background: #fbfcfc;
+    }
+
+    .top-header {
+        gap: 18px;
+        padding: 20px 16px 17px;
+    }
+
+    .brand-area {
+        align-items: flex-start;
+        gap: 13px;
+    }
+
+    .logo-mark {
+        width: 49px;
+        height: 49px;
+        border-radius: 16px;
+        font-size: 1.15rem;
+    }
+
+    .brand-title-row {
+        gap: 7px;
+    }
+
+    .brand-title-row h1 {
+        font-size: 1.48rem;
+    }
+
+    .brand-divider {
+        height: 22px;
+    }
+
+    .brand-caption {
+        font-size: 0.84rem;
+    }
+
+    .brand-description {
+        font-size: 0.77rem;
+        line-height: 1.55;
+    }
+
+    .header-status {
+        gap: 12px;
+        padding: 12px 14px;
+        border-radius: 20px;
+    }
+
+    .status-block span {
+        font-size: 0.65rem;
+    }
+
+    .status-block strong {
+        font-size: 0.87rem;
+    }
+
+    .status-divider {
+        height: 34px;
+    }
+
+    .main-navigation {
+        gap: 8px;
+        padding: 10px 12px;
+    }
+
+    .nav-button {
+        min-height: 43px;
+        padding: 0 15px;
+        border-radius: 14px;
+        font-size: 0.82rem;
+    }
+
+    .main-content {
+        padding: 15px 12px 24px;
+    }
+
+    .panel,
+    .next-concert-card {
+        border-radius: 26px;
+    }
+
+    .large-feature-panel,
+    .live-history-panel,
+    .event-settings-panel,
+    .budget-input-panel,
+    .budget-chart-panel,
+    .venue-guide-panel,
+    .local-spot-panel,
+    .travel-panel,
+    .setlist-panel,
+    .memories-panel,
+    .vlog-panel {
+        padding: 22px;
+    }
+
+    .pink-line {
+        width: 6px;
+        height: 27px;
+    }
+
+    .title-with-line {
+        gap: 11px;
+    }
+
+    .title-with-line h2,
+    .panel-heading h2 {
+        font-size: 1.13rem;
+    }
+
+    .title-with-line p,
+    .panel-heading p {
+        font-size: 0.78rem;
+        line-height: 1.65;
+    }
+
+    .primary-action-button,
+    .outline-button,
+    .mint-action-button {
+        min-height: 45px;
+        padding: 0 17px;
+        border-radius: 14px;
+        font-size: 0.86rem;
+    }
+
+    .small-outline-button {
+        min-height: 39px;
+        font-size: 0.8rem;
+    }
+
+    input,
+    select {
+        height: 49px;
+        border-radius: 13px;
+    }
+
+    textarea {
+        border-radius: 13px;
+    }
+
+    .form-actions {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+
+    .live-history-panel {
+        min-height: 300px;
+        border-width: 1px;
+    }
+
+    .live-select-card {
+        min-height: 150px;
+        border-radius: 19px;
+    }
+
+    .next-concert-card {
+        min-height: 390px;
+        padding: 27px;
+        border-radius: 32px;
+    }
+
+    .next-concert-main {
+        padding-top: 24px;
+    }
+
+    .next-concert-main h2 {
+        max-width: 100%;
+        font-size: 1.78rem;
+    }
+
+    .next-concert-main p {
+        font-size: 1rem;
+    }
+
+    .next-concert-footer {
+        gap: 17px;
+    }
+
+    .concert-meta {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .large-countdown {
+        min-width: 0;
+        font-size: 1.65rem;
+    }
+
+    .file-upload-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .file-upload-button {
+        width: 100%;
+    }
+
+    .checklist-card {
+        min-height: 74px;
+        padding: 14px 16px;
+        border-radius: 17px;
+    }
+
+    .checklist-card input[type="checkbox"],
+    .goods-table input[type="checkbox"],
+    .vlog-clip-checkbox {
+        width: 22px;
+        height: 22px;
+    }
+
+    .budget-input-panel,
+    .budget-chart-panel {
+        min-height: auto;
+    }
+
+    .label-help-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .label-help-row span {
+        text-align: left;
+    }
+
+    .chart-area {
+        min-height: 280px;
+    }
+
+    .chart-wrapper {
+        width: min(300px, 90%);
+    }
+
+    .budget-legend {
+        grid-template-columns: 1fr;
+    }
+
+    .goods-table th,
+    .goods-table td {
+        height: 67px;
+        padding: 12px 15px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+
+    .timeline-time {
+        font-size: 0.9rem;
+    }
+
+    .timeline-card {
+        min-height: 86px;
+        padding: 17px 18px;
+    }
+
+    .timeline-item-actions {
+        grid-column: auto;
+        justify-content: flex-start;
+    }
+
+    .spot-search-box,
+    .travel-form-box,
+    .transport-search-box {
+        padding: 20px;
+        border-radius: 22px;
+    }
+
+    .spot-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .spot-category-button {
+        min-height: 92px;
+    }
+
+    .travel-tip-box {
+        padding: 19px;
+        border-radius: 20px;
+    }
+
+    .map-placeholder {
+        min-height: 350px;
+        padding: 26px;
+    }
+
+    .map-placeholder > i {
+        font-size: 2.65rem;
+    }
+
+    .setlist-list {
+        min-height: 250px;
+        padding-left: 24px;
+    }
+
+    .setlist-action-row {
+        flex-direction: column;
+    }
+
+    .setlist-action-row button {
+        width: 100%;
+    }
+
+    .rating-section {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .star-button {
+        font-size: 1.65rem;
+    }
+
+    .photo-drop-area,
+    .photo-drop-area label {
+        min-height: 180px;
+    }
+
+    .diary-photo-preview {
+        grid-template-columns: 1fr;
+    }
+
+    .diary-photo-preview img {
+        height: 190px;
+    }
+
+    .vlog-column-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .vlog-column-heading .outline-button {
+        width: 100%;
+    }
+
+    .vlog-clip-card {
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 13px;
+        padding: 16px;
+    }
+
+    .vlog-order-buttons {
+        grid-column: 2;
+        justify-content: flex-end;
+    }
+
+    .vlog-theater {
+        min-height: 340px;
+        padding: 26px;
+        border-radius: 28px;
+    }
+
+    .modal-overlay {
+        padding: 16px;
+    }
+
+    .confirm-modal {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .modal-action-row {
+        flex-direction: column-reverse;
+    }
+
+    .modal-action-row button {
+        width: 100%;
+    }
+
+    .toast {
+        right: 12px;
+        bottom: 12px;
+        max-width: calc(100vw - 24px);
+    }
+
+    .app-footer {
+        padding: 21px 16px 24px;
+        font-size: 0.75rem;
+    }
+
+}
+
+/* ==================================================
+   6. 420px以下
+================================================== */
+@media screen and (max-width: 420px) {
+
+    .brand-title-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .brand-divider {
+        display: none;
+    }
+
+    .brand-caption {
+        margin-top: -4px;
+    }
+
+    .header-status {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .status-divider {
+        width: 100%;
+        height: 1px;
+    }
+
+    .main-content {
+        padding-right: 9px;
+        padding-left: 9px;
+    }
+
+    .large-feature-panel,
+    .live-history-panel,
+    .event-settings-panel,
+    .budget-input-panel,
+    .budget-chart-panel,
+    .venue-guide-panel,
+    .local-spot-panel,
+    .travel-panel,
+    .setlist-panel,
+    .memories-panel,
+    .vlog-panel {
+        padding: 18px;
+    }
+
+    .next-concert-card {
+        padding: 23px;
+    }
+
+    .panel-heading > button,
+    .panel-heading .primary-action-button,
+    .panel-heading .mint-action-button {
+        width: 100%;
+    }
+
+    .spot-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .transport-search-button {
+        min-height: 115px;
+    }
+
+    .vlog-suggestion-box {
+        padding: 18px;
+    }
+
+}
+
+/* ==================================================
+   7. ホバー不可端末
+================================================== */
+@media (hover: none) {
+
+    .nav-button:hover,
+    .primary-action-button:hover,
+    .outline-button:hover,
+    .small-outline-button:hover,
+    .mint-action-button:hover,
+    .live-select-card:hover,
+    .checklist-card:hover,
+    .spot-category-button:hover,
+    .transport-search-button:hover,
+    .timeline-action-button:hover,
+    .file-upload-button:hover {
+        transform: none;
+    }
+
+}

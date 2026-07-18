@@ -1,0 +1,2275 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ライブ前・ライブ当日・ライブ後をまとめて管理できるライブサポートアプリ"
+    >
+
+    <title>LiveMate | Concert Concierge</title>
+
+    <!-- Google Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+
+    <!-- =========================================
+         アプリ全体
+    ========================================== -->
+    <div class="app-shell">
+
+
+        <!-- =========================================
+             ヘッダー
+        ========================================== -->
+        <header class="top-header">
+
+            <div class="brand-area">
+
+                <div class="logo-mark">
+                    LM
+                </div>
+
+                <div class="brand-text">
+
+                    <div class="brand-title-row">
+
+                        <h1>
+                            LiveMate
+                        </h1>
+
+                        <span class="brand-divider"></span>
+
+                        <p class="brand-caption">
+                            Concert Concierge
+                        </p>
+
+                    </div>
+
+                    <p class="brand-description">
+                        ライブ当日をスマートかつ心地よくサポートするパーソナルアシスタント
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="header-status">
+
+                <div class="status-block">
+
+                    <span>
+                        ARTIST / EVENT
+                    </span>
+
+                    <strong id="headerArtist">
+                        未登録
+                    </strong>
+
+                </div>
+
+                <div class="status-divider"></div>
+
+                <div class="status-block">
+
+                    <span>
+                        COUNTDOWN
+                    </span>
+
+                    <strong id="headerCountdown">
+                        --
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             上部ナビゲーション
+        ========================================== -->
+        <nav class="main-navigation">
+
+            <button
+                type="button"
+                class="nav-button active"
+                data-page="home"
+            >
+                <i class="fa-regular fa-calendar"></i>
+                <span>Home</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="checklist"
+            >
+                <i class="fa-regular fa-square-check"></i>
+                <span>Checklist</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="budget"
+            >
+                <i class="fa-regular fa-floppy-disk"></i>
+                <span>Budget</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="goods"
+            >
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Goods</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="timeline"
+            >
+                <i class="fa-regular fa-clock"></i>
+                <span>Timeline</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="venue"
+            >
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Venue Info</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="travel"
+            >
+                <i class="fa-solid fa-chevron-right"></i>
+                <span>Travel Plan</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="diary"
+            >
+                <i class="fa-solid fa-music"></i>
+                <span>Diary &amp; Setlist</span>
+            </button>
+
+            <button
+                type="button"
+                class="nav-button"
+                data-page="vlog"
+            >
+                <i class="fa-solid fa-video"></i>
+                <span>Vlog Maker</span>
+            </button>
+
+        </nav>
+
+        <!-- =========================================
+             通知
+        ========================================== -->
+        <div
+            id="toast"
+            class="toast"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+
+        <!-- =========================================
+             メイン
+        ========================================== -->
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 HOME
+            ====================================== -->
+            <section
+                id="homePage"
+                class="page active-page"
+                data-page="home"
+            >
+
+                <!-- ライブ一覧 -->
+                <article class="panel live-history-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="heading-text">
+
+                            <div class="title-with-line">
+
+                                <span class="pink-line"></span>
+
+                                <div>
+                                    <h2>
+                                        My Live Concerts / 参戦ライブ履歴
+                                    </h2>
+
+                                    <p>
+                                        登録したライブの切替や新規追加が可能です
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="showLiveFormButton"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            新規ライブ追加
+                        </button>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <div
+                        id="liveCardGrid"
+                        class="live-card-grid"
+                    >
+
+                        <div class="empty-message">
+                            ライブが登録されていません。
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- 次回ライブ登録　-->
+                <div class="home-bottom-grid">
+
+
+                    <!-- 次回ライブ -->
+                    <article
+                        id="nextConcertCard"
+                        class="next-concert-card"
+                    >
+
+                        <div class="next-concert-label">
+                            NEXT CONCERT
+                        </div>
+
+                        <div class="next-concert-main">
+
+                            <div>
+
+                                <h2 id="nextConcertName">
+                                    ライブ未登録
+                                </h2>
+
+                                <p id="nextConcertArtistVenue">
+                                    ライブを登録してください
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="next-concert-footer">
+
+                            <div class="concert-meta">
+
+                                <div>
+
+                                    <span>
+                                        DATE
+                                    </span>
+
+                                    <strong id="nextConcertDate">
+                                        ----/--/--
+                                    </strong>
+
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        OPEN / START
+                                    </span>
+
+                                    <strong id="nextConcertTime">
+                                        --:-- / --:--
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div
+                                id="mainCountdown"
+                                class="large-countdown"
+                            >
+                                --
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ライブ登録 -->
+                    <article class="panel event-settings-panel">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+                                <h2>
+                                    Event Settings / 公演情報の登録
+                                </h2>
+                            </div>
+
+                        </div>
+
+                        <form
+                            id="liveForm"
+                            class="event-form"
+                            novalidate
+                        >
+
+                            <input
+                                type="hidden"
+                                id="editingLiveId"
+                            >
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="liveName">
+                                        ライブ名 / 公演名
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="liveName"
+                                        maxlength="80"
+                                        placeholder="例：ROCK IN JAPAN FES."
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="artistName">
+                                        アーティスト / 出演者
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="artistName"
+                                        maxlength="80"
+                                        placeholder="例：アーティスト名"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="venueName">
+                                        会場
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="venueName"
+                                        maxlength="100"
+                                        placeholder="例：千葉市蘇我スポーツ公園"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="liveDate">
+                                        開催日程
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="liveDate"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="openTime">
+                                        開場時間
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        id="openTime"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="startTime">
+                                        開演時間
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        id="startTime"
+                                        required
+                                    >
+
+                                </div>
+
+                                <div class="form-group full-width">
+
+                                    <label for="seatInfo">
+                                        座席（アリーナ・スタンド、整理番号など）
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="seatInfo"
+                                        maxlength="100"
+                                        placeholder="例：アリーナ A5ブロック 12番"
+                                    >
+
+                                </div>
+
+                                <div class="form-group full-width">
+
+                                    <label for="livePhoto">
+                                        ライブ写真
+                                    </label>
+
+                                    <div class="file-upload-row">
+
+                                        <input
+                                            type="file"
+                                            id="livePhoto"
+                                            accept="image/*"
+                                        >
+
+                                        <label
+                                            for="livePhoto"
+                                            class="file-upload-button"
+                                        >
+                                            <i class="fa-regular fa-image"></i>
+                                            写真を追加
+                                        </label>
+
+                                        <span id="livePhotoName">
+                                            選択されていません
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="button"
+                                    id="cancelLiveEditButton"
+                                    class="outline-button"
+                                >
+                                    キャンセル
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="primary-action-button"
+                                >
+                                    <i class="fa-regular fa-floppy-disk"></i>
+                                    ライブを保存
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 CHECKLIST
+            ====================================== -->
+            <section
+                id="checklistPage"
+                class="page"
+                data-page="checklist"
+            >
+
+                <article class="panel large-feature-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Checklist / 持ち物管理
+                                </h2>
+
+                                <p>
+                                    公演当日に必要なチケットや必需品を整理し、万全な体制で臨みましょう。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="check-progress-box">
+
+                            <div class="progress-title-row">
+
+                                <span>
+                                    準備状況
+                                </span>
+
+                                <strong id="checklistPercent">
+                                    0%
+                                </strong>
+
+                            </div>
+
+                            <div class="mini-progress-track">
+
+                                <div
+                                    id="checklistProgressBar"
+                                    class="mini-progress-fill"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <form
+                        id="addChecklistForm"
+                        class="wide-inline-form"
+                    >
+
+                        <input
+                            type="text"
+                            id="newChecklistItem"
+                            maxlength="50"
+                            placeholder="新しい持ち物を追加…（例：ちびぬい、マスキングテープ、常備薬）"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            追加
+                        </button>
+
+                        <button
+                            type="button"
+                            id="restoreChecklistButton"
+                            class="outline-button"
+                        >
+                            <i class="fa-solid fa-rotate-left"></i>
+                            基本リストを復元
+                        </button>
+
+                    </form>
+
+                    <div
+                        id="checklistGrid"
+                        class="checklist-grid"
+                    ></div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 BUDGET
+            ====================================== -->
+            <section
+                id="budgetPage"
+                class="page"
+                data-page="budget"
+            >
+
+                <div class="budget-layout">
+
+                    <!-- 予算入力 -->
+                    <article class="panel budget-input-panel">
+
+                        <div class="panel-heading">
+
+                            <div class="title-with-line">
+
+                                <span class="pink-line"></span>
+
+                                <div>
+
+                                    <h2>
+                                        Budget Planning / 予算設定
+                                    </h2>
+
+                                    <p>
+                                        遠征やライブは出費がかさむため、計画的にシミュレーションを。
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                id="resetBudgetButton"
+                                class="small-outline-button"
+                            >
+                                <i class="fa-solid fa-rotate-left"></i>
+                                初期化
+                            </button>
+
+                        </div>
+
+                        <form id="budgetForm">
+
+                            <div class="budget-field">
+
+                                <label for="totalBudget">
+                                    総予算（使えるお金）
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="totalBudget"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-separator"></div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="ticketCost">
+                                        チケット代
+                                    </label>
+
+                                    <span>
+                                        ライブのチケット購入代金
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="ticketCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="goodsCost">
+                                        グッズ代
+                                    </label>
+
+                                    <span>
+                                        グッズ購入リストから自動反映可
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="goodsCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="transportCost">
+                                        交通費
+                                    </label>
+
+                                    <span>
+                                        新幹線や航空券、電車賃など
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="transportCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="hotelCost">
+                                        宿泊費
+                                    </label>
+
+                                    <span>
+                                        ホテル・宿代など
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="hotelCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="foodCost">
+                                        食費
+                                    </label>
+
+                                    <span>
+                                        ご当地の美味しいお食事など
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="foodCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="budget-field">
+
+                                <div class="label-help-row">
+
+                                    <label for="otherCost">
+                                        その他
+                                    </label>
+
+                                    <span>
+                                        ロッカー代や追加費用
+                                    </span>
+
+                                </div>
+
+                                <input
+                                    type="number"
+                                    id="otherCost"
+                                    min="0"
+                                    step="1"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="primary-action-button full-width-button"
+                            >
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                予算を保存
+                            </button>
+
+                        </form>
+
+                    </article>
+
+
+                    <!-- 予算グラフ -->
+                    <article class="panel budget-chart-panel">
+
+                        <div class="chart-content-wrapper">
+
+                            <div class="panel-heading">
+
+                                <div class="title-with-line">
+
+                                    <span class="pink-line"></span>
+
+                                    <div>
+                                        <h2>
+                                            Spending Chart / 支出内訳
+                                        </h2>
+                                    </div>
+
+                                </div>
+
+                                <div class="remaining-budget-badge">
+
+                                    残高:
+                                    <strong id="remainingBudget">
+                                        0円
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="panel-divider"></div>
+
+                            <div class="chart-area">
+
+                                <div class="chart-wrapper">
+
+                                    <canvas id="budgetChart"></canvas>
+
+                                    <div class="chart-center-text">
+
+                                        <span>
+                                            合計の支出
+                                        </span>
+
+                                        <strong id="totalSpent">
+                                            0円
+                                        </strong>
+
+                                        <small id="chartBudgetText">
+                                            予算: 0円
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div
+                                id="budgetLegend"
+                                class="budget-legend"
+                            ></div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 GOODS
+            ====================================== -->
+            <section
+                id="goodsPage"
+                class="page"
+                data-page="goods"
+            >
+
+                <article class="panel large-feature-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Goods Planner / グッズ管理
+                                </h2>
+
+                                <p>
+                                    購入済みの総額を自動で予算管理に連携できます。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="syncGoodsBudgetButton"
+                            class="mint-action-button"
+                        >
+                            <i class="fa-regular fa-floppy-disk"></i>
+                            予算管理に自動反映する
+                        </button>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <form
+                        id="goodsForm"
+                        class="goods-entry-form"
+                    >
+
+                        <input
+                            type="text"
+                            id="goodsName"
+                            maxlength="80"
+                            placeholder="グッズ名（例：ツアーステッカー）"
+                            required
+                        >
+
+                        <input
+                            type="number"
+                            id="goodsPrice"
+                            min="0"
+                            step="1"
+                            placeholder="価格（例：800）"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            追加
+                        </button>
+
+                    </form>
+
+                    <div class="goods-table-wrapper">
+
+                        <table class="goods-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th class="purchase-column">
+                                        購入
+                                    </th>
+
+                                    <th>
+                                        グッズ名
+                                    </th>
+
+                                    <th class="price-column">
+                                        価格（円）
+                                    </th>
+
+                                    <th class="operation-column">
+                                        操作
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="goodsTableBody"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 TIMELINE
+            ====================================== -->
+            <section
+                id="timelinePage"
+                class="page"
+                data-page="timeline"
+            >
+
+                <article class="panel large-feature-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Timeline / タイムスケジュール
+                                </h2>
+
+                                <p>
+                                    出発から帰宅まで、ライブ当日の行動スケジュールを記録しましょう。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <form
+                        id="timelineForm"
+                        class="timeline-entry-form"
+                    >
+
+                        <input
+                            type="hidden"
+                            id="editingTimelineId"
+                        >
+
+                        <input
+                            type="time"
+                            id="timelineTime"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            id="timelineTitle"
+                            maxlength="80"
+                            placeholder="予定（例：会場到着、物販列に並ぶ）"
+                            required
+                        >
+
+                        <input
+                            type="text"
+                            id="timelineMemo"
+                            maxlength="150"
+                            placeholder="メモ（例：ロッカーに荷物を預ける）"
+                        >
+
+                        <button
+                            type="submit"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            追加
+                        </button>
+
+                    </form>
+
+                    <div
+                        id="timelineList"
+                        class="timeline-list"
+                    >
+
+                        <div class="empty-message">
+                            予定が登録されていません。
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 VENUE INFO
+            ====================================== -->
+            <section
+                id="venuePage"
+                class="page"
+                data-page="venue"
+            >
+
+                <div class="venue-layout">
+
+                    <!-- 会場メモ -->
+
+                    <article class="panel venue-guide-panel">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Venue Guide / 会場ガイド
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+                        <form
+                            id="venueForm"
+                            class="venue-form"
+                        >
+
+                            <div class="form-group full-width">
+
+                                <label for="nearestStation">
+                                    最寄り駅
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nearestStation"
+                                    maxlength="100"
+                                    placeholder="例：水道橋駅"
+                                >
+
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="meetingPlace">
+                                        集合場所
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="meetingPlace"
+                                        maxlength="100"
+                                        placeholder="例：22番ゲート前"
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="meetingTime">
+                                        集合時間
+                                    </label>
+
+                                    <input
+                                        type="time"
+                                        id="meetingTime"
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="entranceGate">
+                                        入場口（Gate）
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="entranceGate"
+                                        maxlength="80"
+                                        placeholder="例：11ゲート"
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="lockerInfo">
+                                        コインロッカー情報
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="lockerInfo"
+                                        maxlength="150"
+                                        placeholder="例：駅構内、ドーム外周ロッカー多数あり"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <label for="venueMemo">
+                                    会場の注意事項・メモ
+                                </label>
+
+                                <textarea
+                                    id="venueMemo"
+                                    rows="5"
+                                    maxlength="500"
+                                    placeholder="例：入場時に手荷物検査あり。ペットボトル持ち込み可能。"
+                                ></textarea>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="primary-action-button full-width-button"
+                            >
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                会場情報を保存
+                            </button>
+
+                        </form>
+
+                    </article>
+
+
+                    <!-- 周辺スポット -->
+                    <article class="panel local-spot-panel">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Local Spot Finder / 周辺スポット検索
+                                </h2>
+
+                                <p>
+                                    開演前の待機時間や、終演後の余韻に浸る際のお店・スポット探しに便利です。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="spot-search-box">
+
+                            <h3>
+                                <i class="fa-regular fa-star"></i>
+                                周辺のお店をジャンル別マップ検索
+                            </h3>
+
+                            <div class="spot-category-grid">
+
+                                <button
+                                    type="button"
+                                    class="spot-category-button"
+                                    data-category="和食"
+                                >
+                                    <span>🍱</span>
+                                    <strong>和食</strong>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="spot-category-button"
+                                    data-category="イタリアン"
+                                >
+                                    <span>🍕</span>
+                                    <strong>イタリアン</strong>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="spot-category-button"
+                                    data-category="中華"
+                                >
+                                    <span>🥟</span>
+                                    <strong>中華</strong>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="spot-category-button"
+                                    data-category="フレンチ"
+                                >
+                                    <span>🇫🇷</span>
+                                    <strong>フレンチ</strong>
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="spot-category-button"
+                                    data-category="カフェ"
+                                >
+                                    <span>☕</span>
+                                    <strong>カフェ</strong>
+                                </button>
+
+                            </div>
+
+                            <div class="spot-search-divider"></div>
+
+                            <h3>
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                自分でキーワードを入れて周辺検索
+                            </h3>
+
+                            <form
+                                id="customSpotSearchForm"
+                                class="spot-custom-search"
+                            >
+
+                                <input
+                                    type="text"
+                                    id="customSpotKeyword"
+                                    maxlength="80"
+                                    placeholder="例：ラーメン、コンビニ、居酒屋、駐車場"
+                                    required
+                                >
+
+                                <button
+                                    type="submit"
+                                    class="primary-action-button"
+                                >
+                                    検索する
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 TRAVEL PLAN
+            ====================================== -->
+            <section
+                id="travelPage"
+                class="page"
+                data-page="travel"
+            >
+
+                <article class="panel travel-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Transit Planner / 遠征・アクセス計画
+                                </h2>
+
+                                <p>
+                                    出発地を入力して、会場までの交通手段を調べましょう。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="openRouteMapButton"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-location-dot"></i>
+                            Google Mapsでルートを開く
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <div class="travel-layout">
+
+                        <div class="travel-input-column">
+
+                            <div class="travel-form-box">
+
+                                <div class="form-group">
+
+                                    <label for="departurePlace">
+                                        出発地（現在地・最寄り駅）
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="departurePlace"
+                                        maxlength="100"
+                                        placeholder="例：東京駅"
+                                    >
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="arrivalPlace">
+                                        到着地（ライブ会場）
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="arrivalPlace"
+                                        maxlength="100"
+                                        placeholder="会場名が自動で反映されます"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                            <div class="travel-tip-box">
+
+                                <h3>
+                                    💡 アクセス計画のコツ
+                                </h3>
+
+                                <p>
+                                    ライブ当日は会場付近の電波状況が混雑し、IC取札も大変混み合います。
+                                    あらかじめモバイルICカードに往復分の交通費をチャージしておくか、
+                                    スマートEXなどで事前予約をしておくのがおすすめです。
+                                </p>
+
+                            </div>
+
+                            <div class="transport-search-box">
+
+                                <h3>
+                                    ⚡ 🔍 交通手段を自分で直接調べる
+                                </h3>
+
+                                <div class="transport-button-grid">
+
+                                    <button
+                                        type="button"
+                                        id="travelMapButton"
+                                        class="transport-search-button"
+                                    >
+                                        <span>🗺️</span>
+                                        <strong>自分でマップ</strong>
+                                        <small>Google Mapsを開く</small>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        id="shinkansenSearchButton"
+                                        class="transport-search-button"
+                                    >
+                                        <span>🚄</span>
+                                        <strong>新幹線を調べる</strong>
+                                        <small>スマートEX・料金比較</small>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        id="trainSearchButton"
+                                        class="transport-search-button"
+                                    >
+                                        <span>🚃</span>
+                                        <strong>電車を調べる</strong>
+                                        <small>乗換案内で検索</small>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        id="busSearchButton"
+                                        class="transport-search-button"
+                                    >
+                                        <span>🚌</span>
+                                        <strong>高速バスを調べる</strong>
+                                        <small>格安深夜・夜行バス</small>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="map-preview-column">
+
+                            <div
+                                id="mapPreview"
+                                class="map-preview"
+                            >
+
+                                <div class="map-placeholder">
+
+                                    <i class="fa-solid fa-map-location-dot"></i>
+
+                                    <h3>
+                                        会場マップ
+                                    </h3>
+
+                                    <p id="mapPreviewText">
+                                        会場を登録すると、ここに会場名が表示されます。
+                                    </p>
+
+                                    <button
+                                        type="button"
+                                        id="mapPlaceholderButton"
+                                        class="primary-action-button"
+                                    >
+                                        Google Mapsで確認
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- =====================================
+                 DIARY & SETLIST
+            ====================================== -->
+            <section
+                id="diaryPage"
+                class="page"
+                data-page="diary"
+            >
+
+                <div class="diary-layout">
+
+
+                    <!-- セットリスト -->
+                    <article class="panel setlist-panel">
+
+                        <div class="panel-heading">
+
+                            <div class="title-with-line">
+
+                                <span class="pink-line"></span>
+
+                                <div>
+
+                                    <h2>
+                                        Setlist / セットリスト保存
+                                    </h2>
+
+                                    <p>
+                                        公演当日に演奏された曲を記録して、余韻に浸りましょう。
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                id="clearSetlistButton"
+                                class="small-outline-button"
+                            >
+                                <i class="fa-regular fa-trash-can"></i>
+                                消去
+                            </button>
+
+                        </div>
+
+                        <form
+                            id="setlistForm"
+                            class="setlist-entry-form"
+                        >
+
+                            <input
+                                type="text"
+                                id="setlistSongInput"
+                                maxlength="100"
+                                placeholder="曲名を入力して追加…"
+                                required
+                            >
+
+                            <button
+                                type="submit"
+                                class="primary-action-button"
+                            >
+                                <i class="fa-solid fa-plus"></i>
+                                追加
+                            </button>
+
+                        </form>
+
+                        <ol
+                            id="setlistList"
+                            class="setlist-list"
+                        ></ol>
+
+                        <div class="setlist-action-row">
+
+                            <button
+                                type="button"
+                                id="copySetlistButton"
+                                class="outline-button"
+                            >
+                                <i class="fa-regular fa-copy"></i>
+                                テキストをコピー
+                            </button>
+
+                            <button
+                                type="button"
+                                id="exportSetlistImageButton"
+                                class="primary-action-button"
+                            >
+                                <i class="fa-regular fa-image"></i>
+                                SNS用画像を書き出す
+                            </button>
+
+                        </div>
+
+                        <canvas
+                            id="setlistShareCanvas"
+                            class="hidden-canvas"
+                            width="1080"
+                            height="1350"
+                        ></canvas>
+
+                    </article>
+
+
+                    <!-- ライブ日記 -->
+                    <article class="panel memories-panel">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Memories / ライブ日記
+                                </h2>
+
+                                <p>
+                                    熱狂が冷めないうちに感想や評価、ライブのメモを保存しておきましょう。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <form id="diaryForm">
+
+                            <div class="rating-section">
+
+                                <span class="rating-label">
+                                    総合評価:
+                                </span>
+
+                                <div
+                                    id="starRating"
+                                    class="star-rating"
+                                    role="radiogroup"
+                                    aria-label="ライブ評価"
+                                >
+
+                                    <button
+                                        type="button"
+                                        class="star-button"
+                                        data-rating="1"
+                                        aria-label="1点"
+                                    >
+                                        <i class="fa-regular fa-star"></i>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="star-button"
+                                        data-rating="2"
+                                        aria-label="2点"
+                                    >
+                                        <i class="fa-regular fa-star"></i>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="star-button"
+                                        data-rating="3"
+                                        aria-label="3点"
+                                    >
+                                        <i class="fa-regular fa-star"></i>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="star-button"
+                                        data-rating="4"
+                                        aria-label="4点"
+                                    >
+                                        <i class="fa-regular fa-star"></i>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="star-button"
+                                        data-rating="5"
+                                        aria-label="5点"
+                                    >
+                                        <i class="fa-regular fa-star"></i>
+                                    </button>
+
+                                </div>
+
+                                <input
+                                    type="hidden"
+                                    id="diaryRating"
+                                    value="0"
+                                >
+
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <label for="diaryMemo">
+                                    感想メモ
+                                </label>
+
+                                <textarea
+                                    id="diaryMemo"
+                                    rows="6"
+                                    maxlength="1000"
+                                    placeholder="熱気、MCの面白かった箇所、推しの表情など、忘れたくない感情をなんでもメモ！"
+                                ></textarea>
+
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <label for="diaryPhoto">
+                                    思い出の写真
+                                </label>
+
+                                <div
+                                    id="diaryDropArea"
+                                    class="photo-drop-area"
+                                >
+
+                                    <input
+                                        type="file"
+                                        id="diaryPhoto"
+                                        accept="image/png,image/jpeg,image/gif"
+                                    >
+
+                                    <label for="diaryPhoto">
+
+                                        <span class="photo-add-icon">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </span>
+
+                                        <strong>
+                                            ドラッグ＆ドロップ、または
+                                            <span>ファイルを選択</span>
+                                        </strong>
+
+                                        <small>
+                                            PNG、JPG、GIF（最大1.5MB）
+                                        </small>
+
+                                    </label>
+
+                                </div>
+
+                                <div
+                                    id="diaryPhotoPreview"
+                                    class="diary-photo-preview"
+                                ></div>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="primary-action-button full-width-button"
+                            >
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                ライブ日記を保存
+                            </button>
+
+                        </form>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================
+                 VLOG MAKER
+            ====================================== -->
+            <section
+                id="vlogPage"
+                class="page"
+                data-page="vlog"
+            >
+
+                <article class="panel vlog-panel">
+
+                    <div class="panel-heading">
+
+                        <div class="title-with-line">
+
+                            <span class="pink-line"></span>
+
+                            <div>
+
+                                <h2>
+                                    Video Diary / Vlog制作アシスタント
+                                </h2>
+
+                                <p>
+                                    タイムスケジュールに沿ったハイライト動画。お気に入りのシーンを繋げて、
+                                    余韻に浸れる思い出のVlogを作ってみましょう。
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="createVlogButton"
+                            class="primary-action-button"
+                        >
+                            <i class="fa-solid fa-play"></i>
+                            Vlogを作成してプレビュー再生
+                        </button>
+
+                    </div>
+
+                    <div class="panel-divider"></div>
+
+                    <div class="vlog-suggestion-box">
+
+                        <i class="fa-regular fa-star"></i>
+
+                        <div>
+
+                            <h3>
+                                タイムスケジュールに合わせたVlog撮影のご提案
+                            </h3>
+
+                            <p id="vlogGuideText">
+                                【おすすめ撮影ガイド】電車の車窓からの景色や、新幹線の中での駅弁などを撮影してみましょう！
+                                移動のワクワク感が伝わります。
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="vlog-layout">
+
+                        <div class="vlog-clips-column">
+
+                            <div class="vlog-column-heading">
+
+                                <h3>
+                                    録画クリップ・構成リスト
+                                </h3>
+
+                                <label
+                                    for="vlogVideoInput"
+                                    class="outline-button"
+                                >
+                                    <i class="fa-solid fa-video"></i>
+                                    動画を追加
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="vlogVideoInput"
+                                    accept="video/*"
+                                    multiple
+                                >
+
+                            </div>
+
+                            <div
+                                id="vlogClipList"
+                                class="vlog-clip-list"
+                            >
+
+                                <article
+                                    class="vlog-clip-card"
+                                    data-scene="出発・移動シーン"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        class="vlog-clip-checkbox"
+                                    >
+
+                                    <div class="vlog-clip-info">
+
+                                        <strong>
+                                            出発・移動シーン
+                                        </strong>
+
+                                        <div>
+                                            <span>移動</span>
+                                            <small>秒数: 15秒</small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vlog-order-buttons">
+
+                                        <button
+                                            type="button"
+                                            class="move-up-button"
+                                            aria-label="上へ移動"
+                                        >
+                                            ▲
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="move-down-button"
+                                            aria-label="下へ移動"
+                                        >
+                                            ▼
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+                                <article
+                                    class="vlog-clip-card"
+                                    data-scene="会場到着・周辺の様子"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        class="vlog-clip-checkbox"
+                                    >
+
+                                    <div class="vlog-clip-info">
+
+                                        <strong>
+                                            会場到着・周辺の様子
+                                        </strong>
+
+                                        <div>
+                                            <span>会場到着</span>
+                                            <small>秒数: 25秒</small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vlog-order-buttons">
+
+                                        <button
+                                            type="button"
+                                            class="move-up-button"
+                                            aria-label="上へ移動"
+                                        >
+                                            ▲
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="move-down-button"
+                                            aria-label="下へ移動"
+                                        >
+                                            ▼
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+                                <article
+                                    class="vlog-clip-card"
+                                    data-scene="戦利品グッズの開封"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        class="vlog-clip-checkbox"
+                                    >
+
+                                    <div class="vlog-clip-info">
+
+                                        <strong>
+                                            戦利品グッズの開封
+                                        </strong>
+
+                                        <div>
+                                            <span>グッズ紹介</span>
+                                            <small>秒数: 20秒</small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vlog-order-buttons">
+
+                                        <button
+                                            type="button"
+                                            class="move-up-button"
+                                            aria-label="上へ移動"
+                                        >
+                                            ▲
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="move-down-button"
+                                            aria-label="下へ移動"
+                                        >
+                                            ▼
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+                                <article
+                                    class="vlog-clip-card"
+                                    data-scene="終演後の感想"
+                                >
+
+                                    <input
+                                        type="checkbox"
+                                        class="vlog-clip-checkbox"
+                                    >
+
+                                    <div class="vlog-clip-info">
+
+                                        <strong>
+                                            終演後の興奮冷めやらぬコメント
+                                        </strong>
+
+                                        <div>
+                                            <span>ライブ後の感想</span>
+                                            <small>秒数: 30秒</small>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="vlog-order-buttons">
+
+                                        <button
+                                            type="button"
+                                            class="move-up-button"
+                                            aria-label="上へ移動"
+                                        >
+                                            ▲
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="move-down-button"
+                                            aria-label="下へ移動"
+                                        >
+                                            ▼
+                                        </button>
+
+                                    </div>
+
+                                </article>
+
+                            </div>
+
+                        </div>
+
+                        <div class="vlog-theater-column">
+
+                            <div
+                                id="vlogTheater"
+                                class="vlog-theater"
+                            >
+
+                                <i class="fa-solid fa-video"></i>
+
+                                <h3>
+                                    Vlog Theater
+                                </h3>
+
+                                <p>
+                                    「撮影完了」にチェックを入れたクリップを一本の思い出ムービーとして
+                                    結合プレビューします。
+                                </p>
+
+                                <video
+                                    id="vlogPreviewVideo"
+                                    controls
+                                    class="hidden"
+                                ></video>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </main>
+
+
+        <!-- =========================================
+             フッター
+        ========================================== -->
+        <footer class="app-footer">
+
+            <p>
+                LiveMate Workspace - Smart &amp; beautiful organizer for live concert fans.
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <!-- =========================================
+         確認モーダル
+    ========================================== -->
+    <div
+        id="confirmModal"
+        class="modal-overlay hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="confirmModalTitle"
+    >
+
+        <div class="confirm-modal">
+
+            <h2 id="confirmModalTitle">
+                確認
+            </h2>
+
+            <p id="confirmModalMessage">
+                この操作を実行しますか？
+            </p>
+
+            <div class="modal-action-row">
+
+                <button
+                    type="button"
+                    id="confirmModalCancelButton"
+                    class="outline-button"
+                >
+                    キャンセル
+                </button>
+
+                <button
+                    type="button"
+                    id="confirmModalOkButton"
+                    class="primary-action-button"
+                >
+                    実行する
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         JavaScript
+    ========================================== -->
+    <script src="js/storage.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/live.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/checklist.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/goods.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/venue.js"></script>
+    <script src="js/travel.js"></script>
+    <script src="js/setlist.js"></script>
+    <script src="js/diary.js"></script>
+    <script src="js/vlog.js"></script>
+
+</body>
+
+</html>
