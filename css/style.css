@@ -738,107 +738,159 @@ select:focus {
     margin-top: 32px;
 }
 
+/* ==================================================
+   次回ライブカードの配置を完全修正
+================================================== */
+
 .next-concert-card {
-    display: flex;
-    min-height: 510px;
-    flex-direction: column;
-    padding: 46px;
-    background:
-        radial-gradient(
-            circle at 15% 10%,
-            rgba(218, 240, 237, 0.95),
-            transparent 43%
-        ),
-        radial-gradient(
-            circle at 85% 90%,
-            rgba(255, 230, 221, 0.82),
-            transparent 42%
-        ),
-        linear-gradient(
-            135deg,
-            #ecf7f5 0%,
-            #f4f0fa 50%,
-            #fff5f1 100%
-        );
-    border: 1px solid #ece8ec;
-    border-radius: 54px;
-    box-shadow: var(--shadow-card);
+    display: grid !important;
+    grid-template-areas:
+        "label"
+        "main"
+        "meta"
+        "countdown";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto auto;
+    align-content: start;
+    gap: 0;
+
+    min-height: 0 !important;
+    height: auto !important;
 }
 
+/* NEXT CONCERT */
 .next-concert-label {
-    display: inline-flex;
-    align-self: flex-start;
-    min-height: 34px;
-    align-items: center;
-    padding: 0 18px;
-    background: rgba(255, 255, 255, 0.74);
-    border: 1px solid rgba(255, 255, 255, 0.88);
-    border-radius: 999px;
-    color: #676261;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    grid-area: label;
 }
 
+/* ライブタイトル・アーティスト・会場 */
 .next-concert-main {
-    flex: 1;
+    grid-area: main;
+
+    flex: none !important;
+    min-height: 0 !important;
+
     padding-top: 30px;
+    padding-bottom: 25px;
 }
 
-.next-concert-main h2 {
-    max-width: 90%;
-    font-size: clamp(1.9rem, 3vw, 2.85rem);
-    font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-}
-
-.next-concert-main p {
-    margin-top: 7px;
-    color: #615e5d;
-    font-size: clamp(1.05rem, 1.65vw, 1.45rem);
-    font-weight: 800;
-}
-
+/*
+ footer自体の箱をなくし、
+ 中のDATE・時間・カウントダウンを
+ カードのグリッドに直接参加させる
+*/
 .next-concert-footer {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 24px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(110, 105, 106, 0.12);
+    display: contents !important;
 }
 
+/* DATE・OPEN / START */
 .concert-meta {
-    display: flex;
-    gap: 44px;
+    grid-area: meta;
+
+    display: grid !important;
+    grid-template-columns:
+        minmax(150px, 0.7fr)
+        minmax(210px, 1fr);
+    gap: 18px;
+
+    width: 100%;
+    margin: 0;
+    padding: 22px 0;
+
+    border-top: 1px solid rgba(80, 75, 75, 0.12);
+    border-bottom: 1px solid rgba(80, 75, 75, 0.12);
+}
+
+.concert-meta > div {
+    min-width: 0;
+    padding: 15px 18px;
+
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 17px;
 }
 
 .concert-meta span {
     display: block;
-    color: #777372;
-    font-size: 0.73rem;
+
+    font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.08em;
+    white-space: nowrap;
 }
 
 .concert-meta strong {
     display: block;
-    margin-top: 2px;
+
+    margin-top: 5px;
+
     font-size: 1rem;
-    font-weight: 800;
+    line-height: 1.45;
+    white-space: nowrap;
 }
 
+/* カウントダウン */
 .large-countdown {
-    min-width: 166px;
-    padding: 11px 18px;
-    background: rgba(255, 255, 255, 0.82);
-    border: 1px solid rgba(255, 255, 255, 0.96);
-    border-radius: 20px;
-    color: var(--primary);
+    grid-area: countdown;
+
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 22px;
+    padding: 18px 22px;
+
+    border-radius: 22px;
     text-align: center;
     font-size: clamp(1.55rem, 2.4vw, 2.15rem);
     font-weight: 800;
+}
+
+@media screen and (max-width: 640px) {
+
+    .next-concert-card {
+        padding: 25px 21px !important;
+    }
+
+    .next-concert-main {
+        padding-top: 24px;
+        padding-bottom: 21px;
+    }
+
+    .next-concert-main h2 {
+        font-size: 1.85rem;
+        line-height: 1.25;
+    }
+
+    .next-concert-main p {
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    .concert-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+        padding: 17px 0;
+    }
+
+    .concert-meta > div {
+        padding: 13px 12px;
+    }
+
+    .concert-meta strong {
+        font-size: 0.88rem;
+        white-space: normal;
+    }
+
+    .large-countdown {
+        margin-top: 17px;
+        padding: 15px;
+    }
 }
 
 .event-settings-panel {
@@ -2323,4 +2375,108 @@ button {
     .live-group-grid {
         grid-template-columns: minmax(0, 1fr);
     }
+}
+
+/* ==================================================
+   次回ライブカード・最終配置
+================================================== */
+
+.next-concert-card {
+    display: flex;
+    min-height: 510px;
+    flex-direction: column;
+}
+
+.next-concert-main {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    padding-top: 30px;
+}
+
+.next-concert-title-area h2 {
+    overflow-wrap: anywhere;
+}
+
+.next-concert-title-area p {
+    overflow-wrap: anywhere;
+}
+
+.next-concert-main .concert-meta {
+    display: grid;
+    grid-template-columns:
+        minmax(130px, 0.8fr)
+        minmax(190px, 1fr);
+    gap: 16px;
+    width: 100%;
+    margin-top: 28px;
+}
+
+.concert-meta-item {
+    min-width: 0;
+    padding: 16px 18px;
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(255, 255, 255, 0.86);
+    border-radius: 18px;
+}
+
+.concert-meta-item span {
+    display: block;
+    color: #777372;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.concert-meta-item strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.45;
+    white-space: nowrap;
+}
+
+.next-concert-footer {
+    display: block;
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(80, 75, 75, 0.12);
+}
+
+.large-countdown {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 18px 20px;
+    text-align: center;
+}
+
+/* ==================================================
+   ライブ写真入力の配置修正
+================================================== */
+
+.file-upload-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.file-upload-button {
+    min-width: 165px;
+    min-height: 52px;
+    white-space: nowrap;
+}
+
+#livePhotoName {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--text-light);
+    font-size: 0.84rem;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

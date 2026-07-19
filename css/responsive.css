@@ -785,3 +785,58 @@
     }
 
 }
+
+@media screen and (max-width: 640px) {
+
+    .next-concert-card {
+        min-height: 0;
+        padding: 25px 21px;
+    }
+
+    .next-concert-main {
+        flex: none;
+        padding-top: 24px;
+    }
+
+    .next-concert-main .concert-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 22px;
+    }
+
+    .concert-meta-item {
+        padding: 13px 12px;
+    }
+
+    .concert-meta-item strong {
+        font-size: 0.86rem;
+        white-space: normal;
+    }
+
+    .next-concert-footer {
+        margin-top: 17px;
+        padding-top: 17px;
+    }
+
+    .large-countdown {
+        padding: 15px 12px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    .file-upload-row {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .file-upload-button {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #livePhotoName {
+        padding-left: 2px;
+        white-space: normal;
+    }
+}
