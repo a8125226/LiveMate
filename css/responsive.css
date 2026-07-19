@@ -937,3 +937,49 @@ button {
         transform: none;
     }
 }
+
+/* スマホで日付・時間入力欄がはみ出すのを防ぐ */
+@media screen and (max-width: 640px) {
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .form-group {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    input[type="date"],
+    input[type="time"] {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .event-form,
+    .event-settings-panel {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+    }
+}
