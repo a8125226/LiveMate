@@ -1,5 +1,3 @@
-# LiveMate
-
 # プログラムのタイトル
 
 LiveMate
