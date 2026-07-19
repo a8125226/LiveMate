@@ -1047,3 +1047,46 @@ button {
         margin-left: 6px;
     }
 }
+@media screen and (max-width: 820px) {
+
+    .live-photo-upload-box {
+        display: flex !important;
+        width: 100% !important;
+        min-height: 118px !important;
+
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 8px !important;
+        padding: 18px 16px !important;
+
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+
+    .live-photo-upload-title {
+        display: inline-flex !important;
+        width: auto !important;
+
+        align-items: center !important;
+        justify-content: center !important;
+
+        gap: 10px !important;
+        margin: 0 !important;
+
+        text-align: center !important;
+        transform: none !important;
+    }
+
+    .live-photo-upload-box #livePhotoName {
+        display: block !important;
+        width: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        text-align: center !important;
+        transform: none !important;
+    }
+}
