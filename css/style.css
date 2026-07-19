@@ -2153,3 +2153,174 @@ input[type="time"] {
         max-width: 170px;
     }
 }
+/* ==========================================
+   レイアウト崩れ防止
+========================================== */
+
+.app-shell,
+.main-content,
+.page,
+.panel,
+.home-bottom-grid,
+.budget-layout,
+.venue-layout,
+.travel-layout,
+.diary-layout,
+.vlog-layout {
+    min-width: 0;
+}
+
+.panel,
+.next-concert-card,
+.live-select-card,
+.checklist-card,
+.timeline-card,
+.vlog-clip-card {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+span,
+strong,
+label,
+button,
+td,
+th {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+input,
+textarea,
+select,
+button {
+    max-width: 100%;
+}
+
+.live-card-grid,
+.checklist-grid,
+.goods-entry-form,
+.timeline-entry-form,
+.form-grid {
+    min-width: 0;
+}
+
+.live-card-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+.live-select-footer {
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.live-card-action {
+    white-space: nowrap;
+}
+
+.goods-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.next-concert-main h2,
+.next-concert-main p {
+    overflow-wrap: anywhere;
+}
+
+@media screen and (max-width: 1250px) {
+    .home-bottom-grid,
+    .budget-layout,
+    .venue-layout,
+    .travel-layout,
+    .diary-layout,
+    .vlog-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .live-card-grid,
+    .checklist-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .timeline-entry-form,
+    .goods-entry-form,
+    .wide-inline-form,
+    .spot-custom-search {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .panel-heading {
+        min-width: 0;
+    }
+
+    .panel-heading > * {
+        max-width: 100%;
+    }
+}
+.live-card-grid {
+    display: block;
+    max-height: none;
+    overflow: visible;
+}
+
+.live-list-group + .live-list-group {
+    margin-top: 30px;
+}
+
+.live-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 14px;
+}
+
+.live-list-heading h3 {
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.live-list-heading span {
+    padding: 5px 12px;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-sub);
+    font-size: 0.75rem;
+    font-weight: 800;
+}
+
+.live-group-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        3,
+        minmax(0, 1fr)
+    );
+    gap: 18px;
+}
+
+@media screen and (max-width: 1250px) {
+    .live-group-grid {
+        grid-template-columns: repeat(
+            2,
+            minmax(0, 1fr)
+        );
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .live-group-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

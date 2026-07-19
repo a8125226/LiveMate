@@ -537,10 +537,21 @@ function createLiveCardHtml(live) {
     const finished =
         isLiveFinished(live);
 
-    const photoStyle =
-        live.photo
-            ? `style="background-image:url('${live.photo}')"`
-            : "";
+    const photoStyle = live.photo
+    ? `
+        style="
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.82),
+                    rgba(255,255,255,0.82)
+                ),
+                url('${live.photo}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        "
+    `
+    : "";
 
     return `
         <article
@@ -631,23 +642,20 @@ function createLiveCardHtml(live) {
    12. ライブ一覧表示
 ================================================== */
 function renderLiveCards() {
-
     const container =
-        document.getElementById(
-            "liveCardGrid"
-        );
+        document.getElementById("liveCardGrid");
 
     if (!container) {
         return;
     }
 
-    const lives =
-        sortLivesByDate(
-            getLives()
-        );
+    const upcomingLives = getUpcomingLives();
+    const pastLives = getPastLives();
 
-    if (lives.length === 0) {
-
+    if (
+        upcomingLives.length === 0 &&
+        pastLives.length === 0
+    ) {
         container.innerHTML = `
             <div class="empty-message">
                 ライブが登録されていません。
@@ -655,14 +663,53 @@ function renderLiveCards() {
         `;
 
         return;
-
     }
 
-    container.innerHTML =
-        lives
-            .map(createLiveCardHtml)
-            .join("");
+    const upcomingHtml =
+        upcomingLives.length > 0
+            ? upcomingLives
+                .map(createLiveCardHtml)
+                .join("")
+            : `
+                <div class="empty-message">
+                    参戦予定のライブはありません。
+                </div>
+            `;
 
+    const historyHtml =
+        pastLives.length > 0
+            ? pastLives
+                .map(createLiveCardHtml)
+                .join("")
+            : `
+                <div class="empty-message">
+                    参戦履歴はまだありません。
+                </div>
+            `;
+
+    container.innerHTML = `
+        <section class="live-list-group">
+            <div class="live-list-heading">
+                <h3>参戦予定</h3>
+                <span>${upcomingLives.length}件</span>
+            </div>
+
+            <div class="live-group-grid">
+                ${upcomingHtml}
+            </div>
+        </section>
+
+        <section class="live-list-group">
+            <div class="live-list-heading">
+                <h3>参戦履歴</h3>
+                <span>${pastLives.length}件</span>
+            </div>
+
+            <div class="live-group-grid">
+                ${historyHtml}
+            </div>
+        </section>
+    `;
 }
 
 /* ==================================================
@@ -762,29 +809,22 @@ function renderNextConcert() {
     }
 
     if (card) {
+    if (selectedLive.photo) {
+        card.style.backgroundImage = `
+            linear-gradient(
+                rgba(255, 255, 255, 0.72),
+                rgba(255, 255, 255, 0.72)
+            ),
+            url("${selectedLive.photo}")
+        `;
 
-        if (selectedLive.photo) {
-
-            card.style.backgroundImage =
-                `linear-gradient(
-                    rgba(255,255,255,0.72),
-                    rgba(255,255,255,0.72)
-                ),
-                url("${selectedLive.photo}")`;
-
-            card.style.backgroundSize =
-                "cover";
-
-            card.style.backgroundPosition =
-                "center";
-
-        } else {
-
-            card.style.backgroundImage = "";
-
-        }
-
+        card.style.backgroundSize = "cover";
+        card.style.backgroundPosition = "center";
+        card.style.backgroundRepeat = "no-repeat";
+    } else {
+        card.removeAttribute("style");
     }
+}
 
 }
 
