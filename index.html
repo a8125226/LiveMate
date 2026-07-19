@@ -220,7 +220,8 @@
             class="toast"
             role="status"
             aria-live="polite"
-        ></div>
+        >
+        </div>
 
 
         <!-- =========================================
@@ -306,96 +307,96 @@
 
                         <div class="next-concert-main">
 
-    <div class="next-concert-title-area">
+                <div class="next-concert-title-area">
 
-        <h2 id="nextConcertName">
-            ライブ未登録
-        </h2>
+                    <h2 id="nextConcertName">
+                        ライブ未登録
+                    </h2>
 
-        <p id="nextConcertArtistVenue">
-            ライブを登録してください
-        </p>
+                    <p id="nextConcertArtistVenue">
+                        ライブを登録してください
+                    </p>
 
-    </div>
+                </div>
 
-    <div class="concert-meta">
+                <div class="concert-meta">
 
-        <div class="concert-meta-item">
+                <div class="concert-meta-item">
 
-            <span>DATE</span>
+                    <span>DATE</span>
 
-            <strong id="nextConcertDate">
-                ----/--/--
-            </strong>
+                    <strong id="nextConcertDate">
+                        ----/--/--
+                    </strong>
+
+                </div>
+
+                <div class="concert-meta-item">
+
+                    <span>OPEN / START</span>
+
+                    <strong id="nextConcertTime">
+                        --:-- / --:--
+                    </strong>
+
+                </div>
 
         </div>
 
-        <div class="concert-meta-item">
+        <div class="next-concert-footer">
 
-            <span>OPEN / START</span>
-
-            <strong id="nextConcertTime">
-                --:-- / --:--
-            </strong>
-
-        </div>
-
-    </div>
-
-    <div class="next-concert-footer">
-
-        <div
-            id="mainCountdown"
-            class="large-countdown"
-        >
+            <div
+                id="mainCountdown"
+                class="large-countdown"
+            >
             --
-    </div>
+        </div>
 
-</div>
+    </div>
 </article>
 
 
  <!-- ライブ登録 -->
- <article class="panel event-settings-panel">
+<article class="panel event-settings-panel">
 
-<div class="title-with-line">
+    <div class="title-with-line">
 
-    <span class="pink-line"></span>
+        <span class="pink-line"></span>
 
-         <div>
+            <div>
             <h2>
                 Event Settings / 公演情報の登録
             </h2>
         </div>
 
-</div>
+    </div>
 
-                        <form
-                            id="liveForm"
-                            class="event-form"
-                            novalidate
-                        >
+    <form
+        id="liveForm"
+        class="event-form"
+        novalidate
+    >
 
-                            <input
-                                type="hidden"
-                                id="editingLiveId"
-                            >
+    <input
+        type="hidden"
+        id="editingLiveId"
+    >
 
-                            <div class="form-grid">
+    <div class="form-grid">
 
-                                <div class="form-group">
+        <div class="form-group">
 
-                                    <label for="liveName">
-                                        ライブ名 / 公演名
-                                    </label>
+                <label for="liveName">
+                        ライブ名 / 公演名
+                </label>
 
-                                    <input
-                                        type="text"
-                                        id="liveName"
-                                        maxlength="80"
-                                        placeholder="例：ROCK IN JAPAN FES."
-                                        required
-                                    >
+                <input
+                    type="text"
+                    id="liveName"
+                    maxlength="80"
+                    placeholder="例：ROCK IN JAPAN FES."
+                    required
+                >
 
                                 </div>
 
@@ -488,65 +489,70 @@
 
                                 </div>
 
-                                <div class="form-group full-width">
+<div class="form-group full-width">
 
-                                    <label for="livePhoto">
-                                        ライブ写真
-                                    </label>
+    <label for="livePhoto">
+        ライブ写真
+    </label>
 
-                                    <div class="file-upload-row">
+    <div class="live-photo-upload">
 
-                                        <input
-                                            type="file"
-                                            id="livePhoto"
-                                            accept="image/*"
-                                        >
+        <input
+            type="file"
+            id="livePhoto"
+            accept="image/*"
+        >
 
-                                        <label
-                                            for="livePhoto"
-                                            class="file-upload-button"
-                                        >
-                                            <i class="fa-regular fa-image"></i>
-                                            写真を追加
-                                        </label>
+        <label
+            for="livePhoto"
+            class="live-photo-upload-box"
+        >
 
-                                        <span id="livePhotoName">
-                                            選択されていません
-                                        </span>
+            <span class="live-photo-upload-title">
 
-                                    </div>
+                <i class="fa-regular fa-image"></i>
 
-                                </div>
+                写真を追加
 
-                            </div>
+            </span>
 
-                            <div class="form-actions">
+            <span id="livePhotoName">
+                選択されていません
+            </span>
 
-                                <button
-                                    type="button"
-                                    id="cancelLiveEditButton"
-                                    class="outline-button"
-                                >
-                                    キャンセル
-                                </button>
+        </label>
 
-                                <button
-                                    type="submit"
-                                    class="primary-action-button"
-                                >
-                                    <i class="fa-regular fa-floppy-disk"></i>
-                                    ライブを保存
-                                </button>
+    </div>
 
-                            </div>
+</div>
 
-                        </form>
+<div class="form-actions">
 
-                    </article>
+    <button
+        type="button"
+        id="cancelLiveEditButton"
+        class="outline-button"
+    >
+        キャンセル
+    </button>
 
-                </div>
+    <button
+        type="submit"
+        class="primary-action-button"
+    >
+    <i class="fa-regular fa-floppy-disk"></i>
+        ライブを保存
+    </button>
 
-            </section>
+</div>
+
+    </form>
+
+</article>
+
+</div>
+
+</section>
 
 
             <!-- =====================================

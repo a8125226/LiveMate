@@ -825,18 +825,24 @@
 
 @media screen and (max-width: 640px) {
 
-    .file-upload-row {
-        grid-template-columns: 1fr;
-        gap: 9px;
+    .live-photo-upload-box {
+        min-height: 76px;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        padding: 14px 18px;
     }
 
-    .file-upload-button {
+    .live-photo-upload-title {
+        font-size: 0.94rem;
+    }
+
+    .live-photo-upload-box #livePhotoName {
         width: 100%;
-        min-width: 0;
-    }
-
-    #livePhotoName {
-        padding-left: 2px;
+        font-size: 0.78rem;
+        text-align: left;
         white-space: normal;
     }
+
 }
