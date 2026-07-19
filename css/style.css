@@ -2924,3 +2924,67 @@ th {
         transform: none;
     }
 }
+
+/* ==========================================
+   スマホ版・写真アップロード最終調整
+========================================== */
+
+@media screen and (max-width: 820px) {
+
+    .live-photo-upload-box {
+        display: flex;
+        width: 100%;
+        min-height: 118px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+        padding: 18px 16px;
+
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .live-photo-upload-title {
+        display: inline-flex;
+        width: auto;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+        margin: 0;
+
+        font-size: 1rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .live-photo-upload-title i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        flex: 0 0 auto;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .live-photo-upload-box #livePhotoName {
+        display: block;
+        width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        font-size: 0.8rem;
+        line-height: 1.4;
+        text-align: center;
+
+        white-space: normal;
+        transform: none;
+    }
+
+}
