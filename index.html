@@ -510,27 +510,25 @@
                                         accept="image/*"
                                     >
 
-                                    <label
-                                        for="livePhoto"
-                                        class="live-photo-upload-box"
-                                    >
-
-                                        <span class="live-photo-upload-title">
-
+                                    <div class="photo-upload-box">
+                                        <label for="livePhoto" class="photo-upload-label">
                                             <i class="fa-regular fa-image"></i>
 
-                                            写真を追加
+                                            <div class="photo-upload-text">
+                                                <span class="photo-title">写真を追加</span>
+                                                <span id="livePhotoName" class="photo-file-name">
+                                                    選択されていません
+                                                </span>
+                                            </div>
+                                        </label>
 
-                                        </span>
-
-                                        <span id="livePhotoName">
-                                            選択されていません
-                                        </span>
-
-                                    </label>
-
+                                        <input
+                                            type="file"
+                                            id="livePhoto"
+                                            accept="image/*"
+                                        >
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
 

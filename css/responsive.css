@@ -1090,3 +1090,19 @@ button {
         transform: none !important;
     }
 }
+
+.photo-upload-box{
+    padding:20px;
+}
+
+.photo-upload-label i{
+    font-size:36px;
+}
+
+.photo-title{
+    font-size:1.25rem;
+}
+
+.photo-file-name{
+    font-size:0.95rem;
+}
