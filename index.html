@@ -220,8 +220,7 @@
             class="toast"
             role="status"
             aria-live="polite"
-        >
-        </div>
+        ></div>
 
 
         <!-- =========================================
@@ -294,7 +293,6 @@
                 <!-- 次回ライブ登録　-->
                 <div class="home-bottom-grid">
 
-
                     <!-- 次回ライブ -->
                     <article
                         id="nextConcertCard"
@@ -307,264 +305,385 @@
 
                         <div class="next-concert-main">
 
-                <div class="next-concert-title-area">
+                            <div class="next-concert-title-area">
 
-                    <h2 id="nextConcertName">
-                        ライブ未登録
-                    </h2>
+                                 <h2 id="nextConcertName">
+                                    ライブ未登録
+                                </h2>
 
-                    <p id="nextConcertArtistVenue">
-                        ライブを登録してください
-                    </p>
+                                <p id="nextConcertArtistVenue">
+                                    ライブを登録してください
+                                </p>
+
+                            </div>
+
+                            <div class="concert-meta">
+
+                                <div class="concert-meta-item">
+
+                                    <span>DATE</span>
+
+                                    <strong id="nextConcertDate">
+                                        ----/--/--
+                                    </strong>
+
+                                </div>
+
+                                <div class="concert-meta-item">
+
+                                    <span>OPEN / START</span>
+
+                                    <strong id="nextConcertTime">
+                                        --:-- / --:--
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                            <div class="next-concert-footer">
+
+                                <div
+                                    id="mainCountdown"
+                                    class="large-countdown"
+                                >
+                                    <span class="countdown-primary-text">
+                                        ライブ未登録
+                                    </span>
+
+                                    <small class="countdown-secondary-text">
+                                        ライブを登録してください
+                                    </small>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </article>
+
+
+                <!-- ライブ登録 -->
+                <article class="panel event-settings-panel">
+
+                    <div class="title-with-line">
+
+                        <span class="pink-line"></span>
+
+                        <div>
+                            <h2>
+                                Event Settings / 公演情報の登録
+                            </h2>
+                        </div>
+
+                    </div>
+
+                    <form
+                        id="liveForm"
+                        class="event-form"
+                        novalidate
+                    >
+
+                        <input
+                            type="hidden"
+                            id="editingLiveId"
+                        >
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="liveName">
+                                    ライブ名 / 公演名
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="liveName"
+                                    maxlength="80"
+                                    placeholder="例：ROCK IN JAPAN FES."
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="artistName">
+                                    アーティスト / 出演者
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="artistName"
+                                    maxlength="80"
+                                    placeholder="例：アーティスト名"
+                                    required
+                                >                                    >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="venueName">
+                                    会場
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="venueName"
+                                    maxlength="100"
+                                    placeholder="例：千葉市蘇我スポーツ公園"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="liveDate">
+                                    開催日程
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="liveDate"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="openTime">
+                                    開場時間
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="openTime"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="startTime">
+                                    開演時間
+                                </label>
+
+                                <input
+                                    type="time"
+                                    id="startTime" 
+                                    required                                       required
+                                >
+
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <label for="seatInfo">
+                                    座席（アリーナ・スタンド、整理番号など）
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="seatInfo"
+                                    maxlength="100"
+                                    placeholder="例：アリーナ A5ブロック 12番"                                        placeholder="例：アリーナ A5ブロック 12番"
+                                >
+
+                            </div>
+
+                            <!-- 写真追加欄 -->
+                            <div class="form-group full-width">
+
+                                <label for="livePhoto">
+                                    ライブ写真
+                                </label>
+
+                                <div class="live-photo-upload">
+
+                                    <input
+                                        type="file"
+                                        id="livePhoto"
+                                        accept="image/*"
+                                    >
+
+                                    <label
+                                        for="livePhoto"
+                                        class="live-photo-upload-box"
+                                    >
+
+                                        <span class="live-photo-upload-title">
+
+                                            <i class="fa-regular fa-image"></i>
+
+                                            写真を追加
+
+                                        </span>
+
+                                        <span id="livePhotoName">
+                                            選択されていません
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                id="cancelLiveEditButton"
+                                class="outline-button"
+                            >
+                                キャンセル
+                            </button>
+
+                            <button
+                                type="submit"
+                                class="primary-action-button"
+                            >
+                                <i class="fa-regular fa-floppy-disk"></i>
+                                    ライブを保存
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CHECKLIST
+        ====================================== -->
+        <section
+            id="checklistPage"
+            class="page"
+            data-page="checklist"
+        >
+
+            <article class="panel large-feature-panel">
+
+                <div class="panel-heading">
+
+                    <div class="title-with-line">
+
+                        <span class="pink-line"></span>
+
+                        <div>
+
+                            <h2>
+                                Checklist / 持ち物管理
+                            </h2>
+
+                            <p>
+                                公演当日に必要なチケットや必需品を整理し、万全な体制で臨みましょう。
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="check-progress-box">
+
+                        <div class="progress-title-row">
+
+                            <span>
+                                準備状況
+                            </span>
+
+                            <strong id="checklistPercent">
+                                0%
+                            </strong>
+
+                        </div>
+
+                        <div 
+                            class="mini-progress-track"
+                            role="progressbar"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            aria-valuenow="0"
+                        >
+
+                            <div
+                                id="checklistProgressBar"
+                                class="mini-progress-fill"
+                            ></div>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div class="concert-meta">
+                <div class="panel-divider"></div>
 
-                <div class="concert-meta-item">
-
-                    <span>DATE</span>
-
-                    <strong id="nextConcertDate">
-                        ----/--/--
-                    </strong>
-
-                </div>
-
-                <div class="concert-meta-item">
-
-                    <span>OPEN / START</span>
-
-                    <strong id="nextConcertTime">
-                        --:-- / --:--
-                    </strong>
-
-                </div>
-
-        </div>
-
-        <div class="next-concert-footer">
-
-            <div
-                id="mainCountdown"
-                class="large-countdown"
-            >
-            --
-        </div>
-
-    </div>
-</article>
-
-
- <!-- ライブ登録 -->
-<article class="panel event-settings-panel">
-
-    <div class="title-with-line">
-
-        <span class="pink-line"></span>
-
-            <div>
-            <h2>
-                Event Settings / 公演情報の登録
-            </h2>
-        </div>
-
-    </div>
-
-    <form
-        id="liveForm"
-        class="event-form"
-        novalidate
-    >
-
-    <input
-        type="hidden"
-        id="editingLiveId"
-    >
-
-    <div class="form-grid">
-
-        <div class="form-group">
-
-                <label for="liveName">
-                        ライブ名 / 公演名
-                </label>
-
-                <input
-                    type="text"
-                    id="liveName"
-                    maxlength="80"
-                    placeholder="例：ROCK IN JAPAN FES."
-                    required
+                <form
+                    id="addChecklistForm"
+                    class="wide-inline-form"
                 >
 
-                                </div>
+                    <input
+                        type="text"
+                        id="newChecklistItem"
+                        maxlength="50"
+                        placeholder="新しい持ち物を追加…（例：ちびぬい、マスキングテープ、常備薬）"
+                        required
+                    >
 
-                                <div class="form-group">
+                    <button
+                        type="submit"
+                        class="primary-action-button"
+                    >
+                        <i class="fa-solid fa-plus"></i>
+                            追加
+                    </button>
 
-                                    <label for="artistName">
-                                        アーティスト / 出演者
-                                    </label>
+                    <button
+                        type="button"
+                        id="restoreChecklistButton"
+                        class="outline-button"
+                    >
+                        <i class="fa-solid fa-rotate-left"></i>
+                            基本リストを復元
+                    </button>
 
-                                    <input
-                                        type="text"
-                                        id="artistName"
-                                        maxlength="80"
-                                        placeholder="例：アーティスト名"
-                                        required
-                                    >
+                </form>
 
-                                </div>
+                <div
+                    id="checklistGrid"
+                    class="checklist-grid"
+                ></div>
 
-                                <div class="form-group">
+            </article>
 
-                                    <label for="venueName">
-                                        会場
-                                    </label>
+        </section>
 
-                                    <input
-                                        type="text"
-                                        id="venueName"
-                                        maxlength="100"
-                                        placeholder="例：千葉市蘇我スポーツ公園"
-                                        required
-                                    >
 
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="liveDate">
-                                        開催日程
-                                    </label>
-
-                                    <input
-                                        type="date"
-                                        id="liveDate"
-                                        required
-                                    >
-
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="openTime">
-                                        開場時間
-                                    </label>
-
-                                    <input
-                                        type="time"
-                                        id="openTime"
-                                        required
-                                    >
-
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="startTime">
-                                        開演時間
-                                    </label>
-
-                                    <input
-                                        type="time"
-                                        id="startTime"
-                                        required
-                                    >
-
-                                </div>
-
-                                <div class="form-group full-width">
-
-                                    <label for="seatInfo">
-                                        座席（アリーナ・スタンド、整理番号など）
-                                    </label>
-
-                                    <input
-                                        type="text"
-                                        id="seatInfo"
-                                        maxlength="100"
-                                        placeholder="例：アリーナ A5ブロック 12番"
-                                    >
-
-                                </div>
-
-<div class="form-group full-width">
-
-    <label for="livePhoto">
-        ライブ写真
-    </label>
-
-    <div class="live-photo-upload">
-
-        <input
-            type="file"
-            id="livePhoto"
-            accept="image/*"
+        <!-- =====================================
+             BUDGET
+        ====================================== -->
+        <section
+            id="budgetPage"
+            class="page"
+            data-page="budget"
         >
 
-        <label
-            for="livePhoto"
-            class="live-photo-upload-box"
-        >
+            <div class="budget-layout">
 
-            <span class="live-photo-upload-title">
-
-                <i class="fa-regular fa-image"></i>
-
-                写真を追加
-
-            </span>
-
-            <span id="livePhotoName">
-                選択されていません
-            </span>
-
-        </label>
-
-    </div>
-
-</div>
-
-<div class="form-actions">
-
-    <button
-        type="button"
-        id="cancelLiveEditButton"
-        class="outline-button"
-    >
-        キャンセル
-    </button>
-
-    <button
-        type="submit"
-        class="primary-action-button"
-    >
-    <i class="fa-regular fa-floppy-disk"></i>
-        ライブを保存
-    </button>
-
-</div>
-
-    </form>
-
-</article>
-
-</div>
-
-</section>
-
-
-            <!-- =====================================
-                 CHECKLIST
-            ====================================== -->
-            <section
-                id="checklistPage"
-                class="page"
-                data-page="checklist"
-            >
-
-                <article class="panel large-feature-panel">
+                <!-- 予算入力 -->
+                <article class="panel budget-input-panel">
 
                     <div class="panel-heading">
 
@@ -575,152 +694,47 @@
                             <div>
 
                                 <h2>
-                                    Checklist / 持ち物管理
+                                    Budget Planning / 予算設定
                                 </h2>
 
                                 <p>
-                                    公演当日に必要なチケットや必需品を整理し、万全な体制で臨みましょう。
+                                    遠征やライブは出費がかさむため、計画的にシミュレーションを。
                                 </p>
 
                             </div>
 
                         </div>
 
-                        <div class="check-progress-box">
-
-                            <div class="progress-title-row">
-
-                                <span>
-                                    準備状況
-                                </span>
-
-                                <strong id="checklistPercent">
-                                    0%
-                                </strong>
-
-                            </div>
-
-                            <div class="mini-progress-track">
-
-                                <div
-                                    id="checklistProgressBar"
-                                    class="mini-progress-fill"
-                                ></div>
-
-                            </div>
-
-                        </div>
+                        <button
+                            type="button"
+                            id="resetBudgetButton"
+                            class="small-outline-button"
+                        >
+                            <i class="fa-solid fa-rotate-left"></i>
+                                初期化
+                        </button>
 
                     </div>
 
-                    <div class="panel-divider"></div>
+                    <form id="budgetForm">
 
-                    <form
-                        id="addChecklistForm"
-                        class="wide-inline-form"
-                    >
-
-                        <input
-                            type="text"
-                            id="newChecklistItem"
-                            maxlength="50"
-                            placeholder="新しい持ち物を追加…（例：ちびぬい、マスキングテープ、常備薬）"
-                            required
-                        >
-
-                        <button
-                            type="submit"
-                            class="primary-action-button"
-                        >
-                            <i class="fa-solid fa-plus"></i>
-                            追加
-                        </button>
-
-                        <button
-                            type="button"
-                            id="restoreChecklistButton"
-                            class="outline-button"
-                        >
-                            <i class="fa-solid fa-rotate-left"></i>
-                            基本リストを復元
-                        </button>
-
-                    </form>
-
-                    <div
-                        id="checklistGrid"
-                        class="checklist-grid"
-                    ></div>
-
-                </article>
-
-            </section>
-
-
-            <!-- =====================================
-                 BUDGET
-            ====================================== -->
-            <section
-                id="budgetPage"
-                class="page"
-                data-page="budget"
-            >
-
-                <div class="budget-layout">
-
-                    <!-- 予算入力 -->
-                    <article class="panel budget-input-panel">
-
-                        <div class="panel-heading">
-
-                            <div class="title-with-line">
-
-                                <span class="pink-line"></span>
-
-                                <div>
-
-                                    <h2>
-                                        Budget Planning / 予算設定
-                                    </h2>
-
-                                    <p>
-                                        遠征やライブは出費がかさむため、計画的にシミュレーションを。
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                            <button
-                                type="button"
-                                id="resetBudgetButton"
-                                class="small-outline-button"
-                            >
-                                <i class="fa-solid fa-rotate-left"></i>
-                                初期化
-                            </button>
-
-                        </div>
-
-                        <form id="budgetForm">
-
-                            <div class="budget-field">
+                        <div class="budget-field">
 
                                 <label for="totalBudget">
                                     総予算（使えるお金）
                                 </label>
 
                                 <input
-                                    type="number"
-                                    id="totalBudget"
-                                    min="0"
-                                    step="1"
-                                    value="0"
-                                >
+                                type="number"
+                                id="totalBudget"
+                                min="0"
+                                step="1"
+                                value="0"
+                            >
 
-                            </div>
+                        </div>
 
-                            <div class="budget-separator"></div>
+                        <div class="budget-separator"></div>
 
                             <div class="budget-field">
 
@@ -915,7 +929,10 @@
 
                                 <div class="chart-wrapper">
 
-                                    <canvas id="budgetChart"></canvas>
+                                    <canvas 
+                                        id="budgetChart"
+                                        aria-label="支出内訳の円グラフ"
+                                    ></canvas>
 
                                     <div class="chart-center-text">
 

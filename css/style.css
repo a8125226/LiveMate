@@ -721,7 +721,7 @@ select:focus {
 .live-select-footer time {
     color: #777271;
     font-size: 0.84rem;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .live-card-action {
@@ -739,7 +739,7 @@ select:focus {
 }
 
 /* ==================================================
-   次回ライブカードの配置を完全修正
+   次回ライブカードの配置
 ================================================== */
 
 .next-concert-card {
@@ -2557,4 +2557,290 @@ button {
     text-align: right;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* ==================================================
+   LiveMate 最終統合修正
+   このブロックを最終指定として使用
+================================================== */
+
+/* 横幅の計算を安定させる */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.app-shell,
+.main-content,
+.page,
+.panel,
+.home-bottom-grid,
+.budget-layout,
+.venue-layout,
+.travel-layout,
+.diary-layout,
+.vlog-layout,
+.form-grid,
+.form-group {
+    min-width: 0;
+}
+
+input,
+textarea,
+select,
+button {
+    max-width: 100%;
+}
+
+/* ---------- NEXT CONCERT ---------- */
+.next-concert-card {
+    display: flex !important;
+    min-width: 0 !important;
+    min-height: 510px !important;
+    height: auto !important;
+    flex-direction: column !important;
+    padding: 46px !important;
+    overflow: hidden !important;
+    background:
+        radial-gradient(circle at 12% 8%, rgba(215, 244, 239, 0.95), transparent 44%),
+        radial-gradient(circle at 90% 15%, rgba(235, 229, 255, 0.88), transparent 42%),
+        radial-gradient(circle at 88% 92%, rgba(255, 229, 218, 0.9), transparent 43%),
+        #f8fbfa !important;
+    border: 1px solid #ece8ec !important;
+    border-radius: 54px !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+.next-concert-label {
+    display: inline-flex !important;
+    align-self: flex-start !important;
+    min-height: 40px !important;
+    align-items: center !important;
+    padding: 0 21px !important;
+    background: rgba(255, 255, 255, 0.76) !important;
+    border: 1px solid rgba(255, 255, 255, 0.92) !important;
+    border-radius: 999px !important;
+    color: #5f5a59 !important;
+    font-size: 0.9rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.12em !important;
+}
+
+.next-concert-main {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding-top: 30px !important;
+}
+
+.next-concert-title-area h2,
+.next-concert-main h2 {
+    max-width: 100% !important;
+    margin: 0 !important;
+    overflow-wrap: anywhere !important;
+    font-size: clamp(1.9rem, 3vw, 2.85rem) !important;
+    line-height: 1.2 !important;
+}
+
+.next-concert-title-area p,
+.next-concert-main p {
+    max-width: 100% !important;
+    margin-top: 8px !important;
+    overflow-wrap: anywhere !important;
+}
+
+.next-concert-main .concert-meta {
+    display: grid !important;
+    grid-template-columns: minmax(140px, 0.8fr) minmax(190px, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    margin-top: 28px !important;
+}
+
+.concert-meta-item {
+    min-width: 0 !important;
+    padding: 16px 18px !important;
+    background: rgba(255, 255, 255, 0.62) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border-radius: 18px !important;
+}
+
+.concert-meta-item span {
+    display: block !important;
+    font-size: 0.72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    white-space: nowrap !important;
+}
+
+.concert-meta-item strong {
+    display: block !important;
+    margin-top: 5px !important;
+    overflow-wrap: anywhere !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    line-height: 1.45 !important;
+    white-space: normal !important;
+}
+
+.next-concert-footer {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+    padding-top: 22px !important;
+    border-top: 1px solid rgba(80, 75, 75, 0.12) !important;
+}
+
+.large-countdown {
+    display: flex !important;
+    width: min(100%, 520px) !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 112px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 20px 24px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.84) !important;
+    border: 1px solid rgba(255, 255, 255, 0.96) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 10px 25px rgba(90, 70, 75, 0.07) !important;
+    text-align: center !important;
+}
+
+.countdown-primary-text {
+    display: block !important;
+    font-size: clamp(1.5rem, 2vw, 2rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+}
+
+.countdown-secondary-text {
+    display: block !important;
+    margin-top: 8px !important;
+    color: var(--primary) !important;
+    font-size: clamp(0.82rem, 1vw, 1rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.5 !important;
+}
+
+/* ---------- ライブ写真アップロード ---------- */
+.live-photo-upload {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.live-photo-upload input[type="file"] {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.live-photo-upload-box {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 72px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 20px !important;
+    margin: 0 !important;
+    padding: 0 24px !important;
+    background: #fffafb !important;
+    border: 2px solid var(--primary-border) !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+}
+
+.live-photo-upload-title {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin: 0 !important;
+    color: #555150 !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+.live-photo-upload-title i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.3rem !important;
+    line-height: 1 !important;
+}
+
+.live-photo-upload-box #livePhotoName {
+    display: flex !important;
+    min-width: 0 !important;
+    min-height: 40px !important;
+    align-items: center !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    color: var(--text-light) !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    text-align: right !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+/* ---------- ライブ履歴 ---------- */
+.live-card-grid {
+    display: block !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.live-list-group + .live-list-group {
+    margin-top: 30px !important;
+}
+
+.live-group-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+}
+
+.live-select-card {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.live-select-footer,
+.live-card-buttons {
+    flex-wrap: wrap !important;
+}
+
+/* ---------- 一般的なはみ出し防止 ---------- */
+.panel,
+.next-concert-card,
+.timeline-card,
+.checklist-card,
+.vlog-clip-card {
+    max-width: 100% !important;
+}
+
+h1,
+h2,
+h3,
+p,
+label,
+button,
+td,
+th {
+    overflow-wrap: anywhere;
 }
