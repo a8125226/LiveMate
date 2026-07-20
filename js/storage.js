@@ -253,6 +253,85 @@ function setSelectedLiveId(liveId) {
 
 }
 
+
+/* ==================================================
+   10. ライブ別の保存キー
+================================================== */
+function getLiveStorageKey(baseKey, liveId = getSelectedLiveId()) {
+
+    if (!liveId) {
+        return baseKey;
+    }
+
+    return `${baseKey}__${String(liveId)}`;
+
+}
+
+function loadLiveData(baseKey, defaultValue = null) {
+
+    const scopedKey = getLiveStorageKey(baseKey);
+
+    if (scopedKey === baseKey) {
+        return defaultValue;
+    }
+
+    const scopedValue = loadData(scopedKey, undefined);
+
+    if (scopedValue !== undefined) {
+        return scopedValue;
+    }
+
+    /* 旧版の共通データは、最初に開いたライブへ一度だけ移行 */
+    const migrationKey = `${baseKey}__migration_completed`;
+    const migrationCompleted = loadData(migrationKey, false);
+
+    if (!migrationCompleted) {
+
+        const legacyValue = loadData(baseKey, undefined);
+
+        if (legacyValue !== undefined) {
+            saveData(scopedKey, legacyValue);
+            saveData(migrationKey, true);
+            return legacyValue;
+        }
+
+        saveData(migrationKey, true);
+
+    }
+
+    return defaultValue;
+
+}
+
+function saveLiveData(baseKey, value) {
+
+    const selectedLiveId = getSelectedLiveId();
+
+    if (!selectedLiveId) {
+        return false;
+    }
+
+    return saveData(
+        getLiveStorageKey(baseKey, selectedLiveId),
+        value
+    );
+
+}
+
+function removeLiveData(baseKey) {
+
+    const selectedLiveId = getSelectedLiveId();
+
+    if (!selectedLiveId) {
+        return false;
+    }
+
+    return removeData(
+        getLiveStorageKey(baseKey, selectedLiveId)
+    );
+
+}
+
 /* ==================================================
    10. ライブ一覧
 ================================================== */

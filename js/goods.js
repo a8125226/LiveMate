@@ -3,7 +3,7 @@
 ================================================== */
 function getGoodsItems() {
 
-    const goods = loadData(
+    const goods = loadLiveData(
         STORAGE_KEYS.goods,
         []
     );
@@ -19,7 +19,7 @@ function getGoodsItems() {
 ================================================== */
 function saveGoodsItems(goods) {
 
-    return saveData(
+    return saveLiveData(
         STORAGE_KEYS.goods,
         Array.isArray(goods)
             ? goods
@@ -598,6 +598,14 @@ function initializeGoodsEvents() {
         );
 
     }
+
+
+    document.addEventListener(
+        "livemate:selectedlivechange",
+        () => {
+            renderGoods();
+        }
+    );
 
     document.addEventListener(
         "livemate:pagechange",

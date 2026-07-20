@@ -2,7 +2,6 @@ let currentPage = "home";
 let pendingConfirmAction = null;
 let toastTimer = null;
 
-
 /* ==================================================
    1. ページ要素の取得
 ================================================== */

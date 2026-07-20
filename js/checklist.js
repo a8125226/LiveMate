@@ -3,14 +3,23 @@
 ================================================== */
 function getChecklistItems() {
 
-    const items = loadData(
+    const defaultItems =
+        DEFAULT_CHECKLIST_ITEMS.map(
+            name => ({
+                id: generateId("check"),
+                name,
+                checked: false
+            })
+        );
+
+    const items = loadLiveData(
         STORAGE_KEYS.checklist,
-        []
+        defaultItems
     );
 
     return Array.isArray(items)
         ? items
-        : [];
+        : defaultItems;
 
 }
 
@@ -19,7 +28,7 @@ function getChecklistItems() {
 ================================================== */
 function saveChecklistItems(items) {
 
-    saveData(
+    saveLiveData(
         STORAGE_KEYS.checklist,
         Array.isArray(items)
             ? items
@@ -564,6 +573,14 @@ function initializeChecklistEvents() {
         );
 
     }
+
+
+    document.addEventListener(
+        "livemate:selectedlivechange",
+        () => {
+            renderChecklist();
+        }
+    );
 
     document.addEventListener(
         "livemate:pagechange",

@@ -5,7 +5,7 @@ let budgetChartInstance = null;
 ================================================== */
 function getBudgetData() {
 
-    const budget = loadData(
+    const budget = loadLiveData(
         STORAGE_KEYS.budget,
         DEFAULT_BUDGET
     );
@@ -43,7 +43,7 @@ function getBudgetData() {
 ================================================== */
 function saveBudgetData(budget) {
 
-    return saveData(
+    return saveLiveData(
         STORAGE_KEYS.budget,
         {
             ...DEFAULT_BUDGET,
@@ -697,7 +697,7 @@ function resetBudget() {
 function getPurchasedGoodsTotal() {
 
     const goods =
-        loadData(
+        loadLiveData(
             STORAGE_KEYS.goods,
             []
         );
@@ -820,6 +820,14 @@ function initializeBudgetEvents() {
         );
 
     }
+
+
+    document.addEventListener(
+        "livemate:selectedlivechange",
+        () => {
+            renderBudgetUI();
+        }
+    );
 
     document.addEventListener(
         "livemate:pagechange",

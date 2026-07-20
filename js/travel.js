@@ -388,7 +388,7 @@ function saveTravelInputs() {
     const values =
         getTravelFormValues();
 
-    saveData(
+    saveLiveData(
         TRAVEL_STORAGE_KEY,
         {
             departure:
@@ -414,10 +414,18 @@ function restoreTravelInputs() {
         getTravelElements();
 
     const saved =
-        loadData(
+        loadLiveData(
             TRAVEL_STORAGE_KEY,
             null
         );
+
+    if (elements.departure) {
+        elements.departure.value = "";
+    }
+
+    if (elements.arrival) {
+        elements.arrival.value = "";
+    }
 
     if (
         saved &&
@@ -545,9 +553,9 @@ function initializeTravelInputEvents() {
 ================================================== */
 function handleTravelLiveChange() {
 
-    reflectSelectedLiveToTravel();
+    restoreTravelInputs();
 
-    saveTravelInputs();
+    reflectSelectedLiveToTravel();
 
 }
 
